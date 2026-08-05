@@ -42,6 +42,7 @@ Publications are stored as markdown files in `_publications/`, one file per pape
 | `date` | Yes | `YYYY-MM-DD` — determines sort order |
 | `venue` | Yes | Venue name in single quotes with the abbreviation in trailing parens, e.g. `'IEEE Transactions on Signal Processing (TSP)'`. Do NOT include the year or edition ordinal (e.g. `2025`, `35th`) — the year renders separately from `date` |
 | `authors` | Yes | Full names, comma-separated. **Yue Huang** wrapped in markdown bold (`**Yue Huang**`). Whether Yue Huang is FIRST in the list decides if the paper appears in the SELECTED tab |
+| `selected` | No | Set `false` to exclude a paper from the SELECTED tab (it still appears in ALL). Default (omitted) is auto-include when Yue Huang is the first author |
 | `link` | Yes | External URL to the paper (IEEE Xplore, arXiv, conference PDF, etc.) — this is where the "Paper" button navigates (opens in a new tab) |
 | `citation` | No | Full citation string (HTML-escaped). Retained in frontmatter for reference but NOT displayed on the page |
 | `paperurl` | No | Legacy field — not displayed for publications (citation and excerpt blocks are hidden for the publications collection) |
@@ -67,7 +68,7 @@ No excerpt, no citation, no body text — gated behind `{% if post.collection !=
 
 The publications page shows two tabs:
 
-- **SELECTED** (default) — loops `site.publications reversed` and includes only papers where the first author is Yue Huang: `{% assign first_author = post.authors | strip | split: ',' | first %}{% if first_author contains 'Yue Huang' %}`. Non-first-author papers appear here only if explicitly requested to add an override.
+- **SELECTED** (default) — loops `site.publications reversed` and includes only papers where the first author is Yue Huang: `{% assign first_author = post.authors | strip | split: ',' | first %}{% if post.selected != false and first_author contains 'Yue Huang' %}`. Non-first-author papers appear here only if explicitly requested to add an override. A first-author paper can be hidden from SELECTED by setting `selected: false` in its frontmatter.
 - **ALL** — loops every publication.
 
 Tab styling lives in `_includes/head/custom.html` (`.tab-nav`, `.tab-pane`), and the switching script in `_includes/footer/custom.html` (vanilla JS on `DOMContentLoaded`).
@@ -91,7 +92,7 @@ link: 'https://doi.org/...'
 
 - Sort order = date descending (newest first). Use appropriate month/day so papers within the same year sort correctly.
 - `venue` — put the abbreviation in trailing parens, e.g. `'IEEE Transactions on Signal Processing (TSP)'`, `'International Conference on Artificial Intelligence and Statistics (AISTATS)'`. Do NOT include the year or an edition ordinal (e.g. `'2025'`, `'35th'`) — the year is taken from `date`. Omit the parens if the venue has no common abbreviation.
-- **SELECTED tab** — a paper is auto-included only when Yue Huang is the first author (the `authors` string starts with `**Yue Huang**`). If a non-first-author paper should also appear in SELECTED, tell Claude explicitly to add an override. ALL picks up every new paper automatically.
+- **SELECTED tab** — a paper is auto-included only when Yue Huang is the first author (the `authors` string starts with `**Yue Huang**`). If a non-first-author paper should also appear in SELECTED, tell Claude explicitly to add an override. If a first-author paper should be excluded from SELECTED, set `selected: false` in its frontmatter. ALL picks up every new paper automatically.
 - The `citation` field is for reference — it won't appear on the page but is good practice to keep.
 - Navigation link in `_data/navigation.yml` must be uncommented for the Publications tab to appear.
 

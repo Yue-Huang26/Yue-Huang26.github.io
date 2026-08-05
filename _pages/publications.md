@@ -20,7 +20,7 @@ author_profile: true
   <div class="tab-pane active" id="papers-selected">
     {% for post in site.publications reversed %}
       {% assign first_author = post.authors | strip | split: ',' | first %}
-      {% if first_author contains 'Yue Huang' %}
+      {% if post.selected != false and first_author contains 'Yue Huang' %}
         {% include archive-single.html %}
       {% endif %}
     {% endfor %}

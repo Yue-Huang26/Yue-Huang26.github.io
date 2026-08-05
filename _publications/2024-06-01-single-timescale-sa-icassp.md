@@ -1,6 +1,7 @@
 ---
 title: "On the Convergence of Single-Timescale Multi-Sequence Stochastic Approximation Without Fixed Point Smoothness"
 collection: publications
+selected: false
 permalink: /publication/2024-06-01-single-timescale-sa-icassp
 date: 2024-06-01
 venue: 'IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)'
