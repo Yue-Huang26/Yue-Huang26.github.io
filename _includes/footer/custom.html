@@ -1,3 +1,19 @@
 <!-- start custom footer snippets -->
 <a href="/sitemap/">Sitemap</a>
 <!-- end custom footer snippets -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var navButtons = document.querySelectorAll('.tab-nav li .button');
+    if (!navButtons.length) return;
+    navButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        navButtons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-pane').forEach(function (p) { p.classList.remove('active'); });
+        var target = document.querySelector(btn.getAttribute('data-ref'));
+        if (target) target.classList.add('active');
+      });
+    });
+  });
+</script>
