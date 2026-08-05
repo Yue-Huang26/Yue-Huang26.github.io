@@ -8,14 +8,14 @@ redirect_from:
   - /about.html
 ---
 
-I'm a PhD student in Electrical and Computer Engineering at Cornell University, under the supervision of Prof. Tianyi Chen. I received my M.S. in Computer Science and Engineering from Sun Yat-sen University in June 2026, under the supervision of Prof. Qing Ling. My research interests are in optimization and differential privacy.
+I'm a PhD student in Electrical and Computer Engineering at Cornell University, based at the Cornell Tech Campus in New York City, under the supervision of Prof. Tianyi Chen. Prior to that, I received my M.S. in Computer Science and Engineering from Sun Yat-sen University in June 2026, under the supervision of Prof. Qing Ling. My research interests are in optimization and differential privacy.
 
 <h2>Education</h2>
 
 <ul style="list-style: none; padding-left: 0;">
   <li style="display: flex; gap: 10px; margin-bottom: 8px; align-items: baseline;">
     <span style="font-weight: bold; color: #555; white-space: nowrap; min-width: 120px;">2026 – Present</span>
-    <span>Ph.D., Electrical and Computer Engineering, <a href="https://www.tech.cornell.edu/">Cornell Tech</a>, Cornell University, New York, USA</span>
+    <span>Ph.D., Electrical and Computer Engineering, <a href="https://www.cornell.edu/">Cornell University</a>, New York, USA</span>
   </li>
   <li style="display: flex; gap: 10px; margin-bottom: 8px; align-items: baseline;">
     <span style="font-weight: bold; color: #555; white-space: nowrap; min-width: 120px;">2023 – 2026</span>
