@@ -36,7 +36,7 @@ Publications are stored as markdown files in `_publications/`, one file per pape
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `title` | Yes | Paper title (double-quoted string) |
+| `title` | Yes | Paper title (double-quoted string). Use **Title Case**: capitalize the first letter of every notional (content) word — including both parts of hyphenated compounds, e.g. `Single-Timescale Multi-Sequence` — while leaving function words (articles like `the`/`a`, conjunctions like `and`, prepositions like `of`, `in`, `on`, `with`, `without`) lowercase. Capitalize the first word and the first word after a colon. Match the published title if it differs |
 | `collection` | Yes | Always `publications` |
 | `permalink` | Yes | URL path: `/publication/YYYY-MM-DD-slug/` |
 | `date` | Yes | `YYYY-MM-DD` — determines sort order |
@@ -91,6 +91,7 @@ link: 'https://doi.org/...'
 ```
 
 - Sort order = date descending (newest first). Use appropriate month/day so papers within the same year sort correctly.
+- `title` — use Title Case: capitalize the initial of every notional (content) word, keeping function words (articles, conjunctions, prepositions like `of`, `in`, `on`, `with`, `without`) lowercase. Capitalize both parts of hyphenated compounds and the first word after a colon.
 - `venue` — put the abbreviation in trailing parens, e.g. `'IEEE Transactions on Signal Processing (TSP)'`, `'International Conference on Artificial Intelligence and Statistics (AISTATS)'`. Do NOT include the year or an edition ordinal (e.g. `'2025'`, `'35th'`) — the year is taken from `date`. Omit the parens if the venue has no common abbreviation.
 - **SELECTED tab** — a paper is auto-included only when Yue Huang is the first author (the `authors` string starts with `**Yue Huang**`). If a non-first-author paper should also appear in SELECTED, tell Claude explicitly to add an override. If a first-author paper should be excluded from SELECTED, set `selected: false` in its frontmatter. ALL picks up every new paper automatically.
 - The `citation` field is for reference — it won't appear on the page but is good practice to keep.
