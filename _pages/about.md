@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a PhD student in Electrical and Computer Engineering at Cornell University, based at the Cornell Tech Campus in New York City, under the supervision of <a href="https://chen.tech.cornell.edu/">Prof. Tianyi Chen</a>. Prior to that, I received my M.S. in Computer Science and Engineering from Sun Yat-sen University in June 2026, under the supervision of <a href="https://scholar.google.com/citations?user=u70vRDYAAAAJ&hl=en">Prof. Qing Ling</a>. My research interests are in optimization and differential privacy.
+I'm a PhD student in Electrical and Computer Engineering at Cornell University, based at the Cornell Tech Campus in New York City, under the supervision of <a href="https://chen.tech.cornell.edu/">Prof. Tianyi Chen</a>. Prior to that, I received my M.E. in Computer Science and Engineering from Sun Yat-sen University in June 2026, under the supervision of <a href="https://scholar.google.com/citations?user=u70vRDYAAAAJ&hl=en">Prof. Qing Ling</a>. My research interests are in optimization and differential privacy.
 
 <h2>Education</h2>
 
@@ -19,7 +19,7 @@ I'm a PhD student in Electrical and Computer Engineering at Cornell University, 
   </li>
   <li style="display: flex; gap: 20px; margin-bottom: 8px; align-items: baseline;">
     <span style="font-weight: bold; color: #555; white-space: nowrap; min-width: 130px;">2023 – 2026</span>
-    <span>M.S., Computer Science and Engineering, <a href="https://cse.sysu.edu.cn/">Sun Yat-sen University</a>, Guangzhou, China</span>
+    <span>M.E., Computer Science and Engineering, <a href="https://cse.sysu.edu.cn/">Sun Yat-sen University</a>, Guangzhou, China</span>
   </li>
   <li style="display: flex; gap: 20px; margin-bottom: 8px; align-items: baseline;">
     <span style="font-weight: bold; color: #555; white-space: nowrap; min-width: 130px;">2018 – 2023</span>
