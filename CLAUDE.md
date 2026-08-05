@@ -40,9 +40,9 @@ Publications are stored as markdown files in `_publications/`, one file per pape
 | `collection` | Yes | Always `publications` |
 | `permalink` | Yes | URL path: `/publication/YYYY-MM-DD-slug/` |
 | `date` | Yes | `YYYY-MM-DD` — determines sort order |
-| `venue` | Yes | Journal or conference name (single-quoted to avoid YAML escaping) |
-| `authors` | Yes | Full names, comma-separated. **Yue Huang** wrapped in markdown bold (`**Yue Huang**`) |
-| `link` | Yes | External URL to the paper (IEEE Xplore, arXiv, conference PDF, etc.) — clicking the title navigates here |
+| `venue` | Yes | Venue name in single quotes with the abbreviation in trailing parens, e.g. `'IEEE Transactions on Signal Processing (TSP)'`. Do NOT include the year or edition ordinal (e.g. `2025`, `35th`) — the year renders separately from `date` |
+| `authors` | Yes | Full names, comma-separated. **Yue Huang** wrapped in markdown bold (`**Yue Huang**`). Whether Yue Huang is FIRST in the list decides if the paper appears in the SELECTED tab |
+| `link` | Yes | External URL to the paper (IEEE Xplore, arXiv, conference PDF, etc.) — this is where the "Paper" button navigates (opens in a new tab) |
 | `citation` | No | Full citation string (HTML-escaped). Retained in frontmatter for reference but NOT displayed on the page |
 | `paperurl` | No | Legacy field — not displayed for publications (citation and excerpt blocks are hidden for the publications collection) |
 | `excerpt` | No | Do NOT include — excerpts are hidden for publications |
@@ -53,13 +53,24 @@ Publication files have **empty body** — everything is in frontmatter. The desc
 
 ### Rendering (via `_includes/archive-single.html`)
 
-Each publication renders on `/publications/` as:
+For `post.collection == 'publications'`, each entry renders on `/publications/` as a `.paper` block:
 
-1. **Serial number** — `{{ forloop.index }}.` before the title
-2. **Title** — linked to `post.link` (the external paper page, e.g. IEEE Xplore). A small permalink icon (🔗) next to it links to the internal `post.url`
-3. **Authors** — rendered via `markdownify` so `**Yue Huang**` produces bold
-4. **Venue** — "Published in *Venue*, Year"
-5. **No excerpt, no citation, no body text** — these are gated behind `{% if post.collection != 'publications' %}` in the template
+1. **Title** — bold, NOT a link. No serial number and no permalink icon (those were removed)
+2. **Authors** — rendered via `markdownify` so `**Yue Huang**` produces bold
+3. **Venue** — `*Venue Name* **(ABBR)**, Year` (name in italics, abbreviation in bold, year taken from `date`). The template splits `post.venue` on `(`: the part before `(` becomes the italic name, the `(…)` part becomes the bold abbreviation
+4. **Paper button** — a small outlined `.button` under the entry that links to `post.link` and opens in a new tab (`target="_blank"`)
+5. A dashed separator line sits in the gap between entries (`.paper { border-bottom: 0.5px dashed grey }` with 0.75em padding above / 0.75em margin below)
+
+No excerpt, no citation, no body text — gated behind `{% if post.collection != 'publications' %}`.
+
+### SELECTED / ALL tabs (`_pages/publications.md`)
+
+The publications page shows two tabs:
+
+- **SELECTED** (default) — loops `site.publications reversed` and includes only papers where the first author is Yue Huang: `{% assign first_author = post.authors | strip | split: ',' | first %}{% if first_author contains 'Yue Huang' %}`. Non-first-author papers appear here only if explicitly requested to add an override.
+- **ALL** — loops every publication.
+
+Tab styling lives in `_includes/head/custom.html` (`.tab-nav`, `.tab-pane`), and the switching script in `_includes/footer/custom.html` (vanilla JS on `DOMContentLoaded`).
 
 ### Adding a new publication
 
@@ -71,7 +82,7 @@ title: "Paper Title Here"
 collection: publications
 permalink: /publication/YYYY-MM-DD-short-slug
 date: YYYY-MM-DD
-venue: 'Journal or Conference Name'
+venue: 'Conference Name (ABBR)'
 authors: 'First Author, **Yue Huang**, Other Author'
 citation: 'Full citation with &amp;quot; etc.'
 link: 'https://doi.org/...'
@@ -79,6 +90,8 @@ link: 'https://doi.org/...'
 ```
 
 - Sort order = date descending (newest first). Use appropriate month/day so papers within the same year sort correctly.
+- `venue` — put the abbreviation in trailing parens, e.g. `'IEEE Transactions on Signal Processing (TSP)'`, `'International Conference on Artificial Intelligence and Statistics (AISTATS)'`. Do NOT include the year or an edition ordinal (e.g. `'2025'`, `'35th'`) — the year is taken from `date`. Omit the parens if the venue has no common abbreviation.
+- **SELECTED tab** — a paper is auto-included only when Yue Huang is the first author (the `authors` string starts with `**Yue Huang**`). If a non-first-author paper should also appear in SELECTED, tell Claude explicitly to add an override. ALL picks up every new paper automatically.
 - The `citation` field is for reference — it won't appear on the page but is good practice to keep.
 - Navigation link in `_data/navigation.yml` must be uncommented for the Publications tab to appear.
 
