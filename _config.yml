@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Yue Huang"
 title_separator          : "-"
 name                     : &name "Yue Huang"
-description              : &description "PhD Student, Electrical and Computer Engineering, Cornell Tech, Cornell University"
+description              : &description "PhD Student, Electrical and Computer Engineering, Cornell Tech and Cornell University"
 url                      : https://Yue-Huang26.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Yue-Huang26/Yue-Huang26.github.io"
@@ -87,7 +87,7 @@ author:
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=GsBF7YMAAAAJ"
-  email            : "huangy579@mail2.sysu.edu.cn"
+  email            : "yh2453@cornell.edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
